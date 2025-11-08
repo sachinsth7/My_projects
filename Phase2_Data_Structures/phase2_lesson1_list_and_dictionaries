@@ -1,0 +1,76 @@
+numbers = [10, 20, 30, 40]
+names = ["Sachin", "Samar", "Priya"]
+mixed = [1, "Data", True, 3.5]
+
+
+
+print(numbers[1])
+
+numbers.append(60)
+print(numbers)
+numbers.remove(60)
+numbers.remove(20)
+for i,n in enumerate(numbers):
+    print(i,n)
+
+
+employee  = {
+    "name" : "Sachin",
+    "Age" : 26,
+    "department": "Data Engineering"
+}
+
+print(employee.get("Age"))
+
+employee["Age"] = 28
+
+employee["salary"] = 500000
+
+for key, value in employee.items():
+    print(f"This is the key->{key} and this is the value of it :{value}")
+
+
+
+employees = [
+    {"name": "Sachin", "Age": 27, "salary": 50000},
+    {"name": "Rajendra", "Age": 34, "salary": 20000}
+]
+
+
+for emp in employees:
+    print(emp['name'])
+
+
+high_salary = [e for e in employees if e["salary"] > 40000]
+print(high_salary)
+
+total = sum(e["salary"] for e in employees)
+print(total)
+
+employees = [
+    {"name": "Sachin", "Age": 27, "department": "Science", "salary": 50000},
+    {"name": "Rajendra", "Age": 34, "department": "Astrology", "salary": 20000},
+    {"name": "Guru", "Age": 34, "department": "Management", "salary": 23400},
+    {"name": "Sandy", "Age": 56, "department": "President", "salary": 10000}
+]
+
+for emp in employees:
+    print(f"Employee {emp["name"]} works in {emp["department"]} and earns ${emp["salary"]}")
+
+average_salary = (sum(e["salary"] for e in employees))/ len(employees)
+print(f"The average salary is: ${average_salary: .2f}")
+
+
+employee_ids = [101, 102, 103, 101, 104, 102]
+unique_eid = set(employee_ids)
+print(unique_eid)
+
+store_a = {"TV", "Laptop", "Camera"}
+store_b = {"Laptop", "Phone", "Camera", "Tablet"}
+
+common = store_a | store_b
+print(common)
+
+print(store_a & store_b)
+
+print(store_a - store_b)
