@@ -74,3 +74,135 @@ print(common)
 print(store_a & store_b)
 
 print(store_a - store_b)
+
+
+employee = {
+    "name": "sachin",
+    "department" : "data_engineering",
+    "salary" : 53000
+}
+
+print(employee.keys())
+
+
+for key, value in employee.items():
+    print(key, value)
+
+
+print(employee.get("salary"))
+
+
+employee['age'] = 28
+
+print(employee['age'])
+
+
+employee.pop('age')
+
+print(employee)
+
+dict1 = {"a": 1, "b": 2}
+
+merged = employee | dict1
+print(merged)
+
+employees = [
+    {"name": "Sachin", "dept": "Data", "salary": 50000},
+    {"name": "Priya", "dept": "Analytics", "salary": 60000},
+    {"name": "Samar", "dept": "Cloud", "salary": 55000}
+]
+
+
+for e in employees:
+    e['salary_usd'] = e['salary']/ 140
+
+print(employees)
+
+
+emp_basic = {"id": 101, "name": "Sachin", "department": "Data Engineering", "location": "st.louis"}
+emp_details = {"age": 27, "salary": 50000, "location": "St Louis"}
+
+emp_full = emp_basic | emp_details
+
+emp_full['status'] = 'Active'
+emp_full.pop('location')
+
+print(emp_full)
+
+
+for key, value in emp_full.items():
+    print(f'{key} -> {value}')
+
+import json
+
+print(json.dumps(emp_full, indent = 2))
+
+
+
+json_object = json.dumps({
+  "name": "Sachin",
+  "age": 27,
+  "skills": ["Python", "SQL", "ETL"],
+  "active": True
+}, indent= 4
+)
+
+
+d = json.loads(json_object)
+print(type(d))
+
+product = {
+    "id": 1001,
+    "name": "Laptop",
+    "price": 1200,
+    "in_stock": True,
+    "specs": {"ram": "16GB", "storage": "512GB SSD"}
+}
+prod = json.dumps(product, indent = 2)
+print(prod)
+
+products = json.loads(prod)
+products['discount'] = 0.1
+print(products)
+
+def flatten_dict(d, parent_key="", sep="."):
+    items = []
+    for k, v in d.items():
+        new_key = f"{parent_key}{sep}{k}" if parent_key else k
+        if isinstance(v, dict):
+            items.extend(flatten_dict(v, new_key, sep=sep).items())
+        else:
+            items.append((new_key, v))
+    return dict(items)
+
+data = {
+    "id": 1,
+    "name": "Sachin",
+    "contact": {"email": "sachin@example.com", "phone": "555-1234"},
+    "skills": ["Python", "SQL"]
+}
+
+flat = flatten_dict(data)
+print(flat)
+
+
+test = {
+  "id": 1001,
+  "name": "Sachin Shrestha",
+  "contact.email": "sachin@example.com",
+  "contact.phone": "555-1234",
+  "orders": [
+      {"id": 5001, "amount": 120.5},
+      {"id": 5002, "amount": 85.0}
+  ]
+}
+
+
+for key, value in test.items():
+    trail = []
+    if isinstance(value,list):
+        for items in value:
+            trail.append((items['id'], items['amount']))
+print(trail)
+
+
